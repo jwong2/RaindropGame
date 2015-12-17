@@ -4,7 +4,7 @@ class Raindrop {
   Raindrop(float xpos, float ypos) {
     loc = new PVector(xpos, ypos);
     vel = new PVector(0, 0);
-    accel = new PVector(0, 0.5);
+    accel = new PVector(0, 0.4);
     diam = 10;
   }
   
@@ -16,8 +16,8 @@ class Raindrop {
     fill(255);
     ellipse(loc.x, loc.y, diam, diam);
   }
-  boolean isInContactWith(PVector object) {
-    if(loc.dist(object) < 50) {
+  boolean isInContactWith(Catcher b) {
+    if(loc.dist(b.loc) < 50) {
       return true;
     } else {
       return false;
