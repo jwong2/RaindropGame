@@ -1,5 +1,5 @@
 //PVector mouse;   //declare a P
-Raindrop[] r = new Raindrop[3000];      //declare a new Raindrop called r
+ArrayList<Raindrop> r = new ArrayList<Raindrop>();      //declare a new Raindrop called r
 Catcher bucket;
 
 // On your own, create an array of Raindrop objects instead of just one
@@ -12,23 +12,22 @@ void setup() {
   noStroke();
   bucket = new Catcher(50, 50);
   //mouse = new PVector();                //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
-  for(int i = 0; i < r.length; i++) {
-    r[i] = new Raindrop(random(width), -3*random(height));   //Initialize r. The parameters used are the initial x and y positions, negative so starts blank and above screen
-  }
 }
 
 void draw() {
+  r.add(new Raindrop(random(width), 0));
   //mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
   background(0, 200, 255);
   bucket.display(); //draw a bucket
-  for(int i = 0; i < r.length; i++) {
-    r[i].fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
-    r[i].display();      //display the raindrop
-    if (r[i].isInContactWith(bucket)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
-      r[i].reset();                         //if it is, reset the raindrop
+  for(int i = 0; i < r.size(); i++) {
+    Raindrop drop = r.get(i);
+    drop.fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
+    drop.display();      //display the raindrop
+    if (drop.isInContactWith(bucket)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
+      r.remove(i);                         //if it is, reset the raindrop
     }
-    if (r[i].loc.y > height + r[i].diam/2) {     //check to see if the raindrop goes below the bottom of the screen
-      r[i].reset(); 
+    if (drop.loc.y > height + drop.diam/2) {     //check to see if the raindrop goes below the bottom of the screen
+      r.remove(i);  
   }
   }
 }
