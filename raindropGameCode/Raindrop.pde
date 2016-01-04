@@ -28,7 +28,7 @@ class Raindrop {
     //add 3 to score if raindrop is green and 1 to score if raindrop is something else (blue)
     if(loc.dist(b.loc) < b.w - diam) {
       if(hue == color(0,255,0)) {
-        b.addScore(30);
+        b.addScore(3);
       }
       else {
         b.addScore(1);

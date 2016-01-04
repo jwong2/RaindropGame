@@ -45,13 +45,15 @@ void draw() {
   //print text on screen
   text("Raindrop Game", 50, 50);
   text("Score: " + bucket.score, width - 200, 50);
+  textSize(10);
+  text("Collect as many as you can up to 100! Green is worth 3 and blue is worth 1.", 50, 75);
   
   //if the game is over
   if(bucket.isGameOver()) {
     textSize(20);
     textAlign(CENTER);
     background(255);
-    text("Thanks for playing. Your efficiency ratio is " + round(bucket.raindropsCaught/bucket.raindropCount*100) + "% and you got or exceeded a score of 100 in "+frameCount+" frames. Try to beat that!", width/2, height/2);
+    text("Thanks for playing. Your efficiency ratio is " + round(bucket.raindropsCaught/bucket.raindropCount*100) + "% and you got or exceeded a score of 100 in "+frameCount+" frames.", width/2, height/2);
     noLoop();
   }
 }

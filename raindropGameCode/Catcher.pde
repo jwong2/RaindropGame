@@ -19,6 +19,8 @@ class Catcher {
     loc = new PVector(mouseX, mouseY);
     fill(0);
     rect(mouseX, mouseY, w, h);
+    //display an ellipse so it looks like a bucket
+    ellipse(mouseX, mouseY + h/2, w, h);
     
   }
   
